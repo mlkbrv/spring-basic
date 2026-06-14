@@ -4,6 +4,6 @@ import org.aspectj.lang.annotation.Pointcut;
 
 public class MyPointCuts {
 
-    @Pointcut("execution(* add*(..))")
+    @Pointcut("execution(* addd*(..))")
     public void allAddMethods() {}
 }
