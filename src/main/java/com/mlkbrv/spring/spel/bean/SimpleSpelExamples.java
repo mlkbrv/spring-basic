@@ -2,7 +2,16 @@ package com.mlkbrv.spring.spel.bean;
 
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.expression.EvaluationContext;
+import org.springframework.expression.Expression;
+import org.springframework.expression.spel.standard.SpelExpressionParser;
+import org.springframework.expression.spel.support.SimpleEvaluationContext;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Component
 public class SimpleSpelExamples {

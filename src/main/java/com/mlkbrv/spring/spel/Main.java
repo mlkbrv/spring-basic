@@ -1,11 +1,12 @@
 package com.mlkbrv.spring.spel;
 
-import com.mlkbrv.spring.spel.bean.Shop;
-import com.mlkbrv.spring.spel.bean.SimpleSpelExamples;
+import com.mlkbrv.spring.spel.bean.*;
 import com.mlkbrv.spring.spel.config.ApplicationConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import java.time.LocalTime;
 
 public class Main {
     public static void main(String[] args) {
@@ -21,7 +22,7 @@ public class Main {
         System.out.println("----------");
         shop.printEndingProducts();
         System.out.println("----------");
-        shop.printVegetablesInfo();
+//        shop.printVegetablesInfo();
         System.out.println("----------");
         shop.printOpenTime();
         System.out.println("----------");
