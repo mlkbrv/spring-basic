@@ -1,27 +1,29 @@
-package com.mlkbrv.hibernate_test;
+package com.mlkbrv.hibernate_one_to_one;
 
-import com.mlkbrv.hibernate_test.entity.Employee;
+import com.mlkbrv.hibernate_one_to_one.entity.Detail;
+import com.mlkbrv.hibernate_one_to_one.entity.Employee;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class Test1 {
+public class Test2 {
     public static void main(String[] args) {
         SessionFactory sessionFactory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Employee.class)
+                .addAnnotatedClass(Detail.class)
                 .buildSessionFactory();
         Session session = sessionFactory.getCurrentSession();
-        Employee employee = new Employee("Xaliq","Abbasov","Finance",500);
+
         session.beginTransaction();
-        session.save(employee);
-//        session.getTransaction().commit();
-//        session = sessionFactory.getCurrentSession();
-//        session.beginTransaction();
-        Employee employee2 = (Employee) session.get(Employee.class, employee.getId());
-        System.out.println(employee2);
+
+
+        Detail detail = session.get(Detail.class,4);
+
+        session.delete(detail);
+
         session.getTransaction().commit();
         sessionFactory.close();
-        int myId = employee.getId();
+        session.close();
     }
 }

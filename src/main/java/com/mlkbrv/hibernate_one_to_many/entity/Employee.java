@@ -1,4 +1,4 @@
-package com.mlkbrv.hibernate_test.entity;
+package com.mlkbrv.hibernate_one_to_many.entity;
 
 import jakarta.persistence.*;
 
@@ -10,22 +10,27 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "surname")
     private String surname;
-    @Column(name = "department")
-    private String department;
+
     @Column(name = "salary")
     private int salary;
-    public Employee() {
 
-    }
-    public Employee(String name, String surname, String department, int salary) {
-        this.name = name;
-        this.surname = surname;
-        this.department = department;
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH
+    , CascadeType.DETACH} )
+    @JoinColumn(name = "department_id")
+    private Department department;
+
+    public Employee() {}
+
+    public Employee(String name, String surname ,int salary) {
         this.salary = salary;
+        this.surname = surname;
+        this.name = name;
     }
 
     public int getId() {
@@ -52,14 +57,6 @@ public class Employee {
         this.surname = surname;
     }
 
-    public String getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
     public int getSalary() {
         return salary;
     }
@@ -68,13 +65,20 @@ public class Employee {
         this.salary = salary;
     }
 
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", department='" + department + '\'' +
                 ", salary=" + salary +
                 '}';
     }

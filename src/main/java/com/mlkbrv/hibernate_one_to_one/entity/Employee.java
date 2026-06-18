@@ -1,4 +1,4 @@
-package com.mlkbrv.hibernate_test.entity;
+package com.mlkbrv.hibernate_one_to_one.entity;
 
 import jakarta.persistence.*;
 
@@ -18,6 +18,11 @@ public class Employee {
     private String department;
     @Column(name = "salary")
     private int salary;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "details_id")
+    private Detail detail;
+
     public Employee() {
 
     }
@@ -68,6 +73,14 @@ public class Employee {
         this.salary = salary;
     }
 
+    public Detail getDetail() {
+        return detail;
+    }
+
+    public void setDetail(Detail detail) {
+        this.detail = detail;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -76,6 +89,7 @@ public class Employee {
                 ", surname='" + surname + '\'' +
                 ", department='" + department + '\'' +
                 ", salary=" + salary +
+                ", detail=" + detail +
                 '}';
     }
 }
