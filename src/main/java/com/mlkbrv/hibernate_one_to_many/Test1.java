@@ -29,13 +29,24 @@ public class Test1 {
 //
 //        session.save(department);
 
-        Department department = session.get(Department.class, 1);
+//        Department department = session.get(Department.class, 1);
+//
+//        List<Employee> employees = department.getEmployees();
+//
+//        for (Employee employee : employees) {
+//            System.out.println(employee);
+//        }
 
-        List<Employee> employees = department.getEmployees();
+        System.out.println("Get department");
+        Department department = session.get(Department.class, 3);
 
-        for (Employee employee : employees) {
-            System.out.println(employee);
-        }
+        System.out.println("Show department");
+        System.out.println(department);
+
+        System.out.println("Get employee");
+        System.out.println(department.getEmployees());
+
+
 
 
         session.getTransaction().commit();
